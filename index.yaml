@@ -1,0 +1,16 @@
+apiVersion: v1
+entries:
+  dynakube:
+  - apiVersion: v2
+    created: "2025-04-07T12:09:10.474636+01:00"
+    dependencies:
+    - name: dynatrace-operator
+      repository: https://raw.githubusercontent.com/Dynatrace/dynatrace-operator/main/config/helm/repos/stable
+      version: 1.4.0
+    description: Dynatrace Dynakube
+    digest: e618754ef7005e34b7170029d07fb275964429178a2e5853d2e0f5c0331fcc66
+    name: dynakube
+    urls:
+    - dynakube-1.0.0.tgz
+    version: 1.0.0
+generated: "2025-04-07T12:09:10.472192+01:00"
