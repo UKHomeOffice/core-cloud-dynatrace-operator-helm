@@ -1,3 +1,4 @@
+dyntraceEnvironmentId: "nuh63189"
 # values for dynatrace operator
 dynatrace-operator:
   operator:
@@ -28,32 +29,26 @@ dynatrace-operator:
       effect: "NoSchedule"
     replicas: "2"
 
-# Values for external secret (for dynakube)
-external-secrets-resources:
-  secretStore:
-    enabled: true
-    kind: SecretStore
-    name: dynatrace-secret-store
-    provider:
-      aws:
-        service: SecretsManager
-        region: eu-west-2
-  # Values for the ExternalSecret
-  externalSecret:
-    enabled: true
-    name: core-cloud-dynakube
-    labels:
-      app: dynatrace
-      refreshInterval: 10m
-    secretStoreRef:
-      name: dynatrace-secret-store
-      kind: SecretStore
-    data:
-      - secretKey: apiToken
-        remoteRef:
-          key: 'dynatrace-tokens'
-          property: apiToken
-      - secretKey: dataIngestToken
-        remoteRef:
-          key: 'dynatrace-tokens'
-          property: dataIngestToken                    
+secretStore:
+  enabled: true
+  kind: SecretStore
+  name: dynatrace-aws-secret-store
+  namespace: dynatrace
+  labels:
+    project: dynatrace
+  provider:
+    aws:
+      service: SecretsManager
+      region: eu-west-2
+
+externalSecrets:
+  - name: dynatrace-ext-secret
+    namespace: dynatrace
+    secretStoreRef: dynatrace-aws-secret-store
+    refreshInterval: "10m"
+    target:
+      name: dynatrace-secret
+      creationPolicy: Owner
+    dataFrom:
+      - extract:
+          key: dev/dynatrace-operator/token                 
