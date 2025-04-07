@@ -1,0 +1,54 @@
+dyntraceEnvironmentId: "nuh63189"
+# values for dynatrace operator
+dynatrace-operator:
+  operator:
+    tolerations:
+    - key: CriticalAddonsOnly
+      operator: Exists
+      effect: "NoSchedule"
+  webhook:
+    tolerations:
+    - key: CriticalAddonsOnly
+      operator: Exists
+      effect: "NoSchedule"
+  csidriver:
+    tolerations:
+    - key: CriticalAddonsOnly
+      operator: Exists
+      effect: "NoSchedule"
+    - key: node-role.kubernetes.io/master
+      operator: Exists
+      effect: "NoSchedule"
+    - key: node-role.kubernetes.io/control-plane
+      operator: Exists
+      effect: "NoSchedule"
+  activeGate:
+    tolerations:
+    - key: CriticalAddonsOnly
+      operator: Exists
+      effect: "NoSchedule"
+    replicas: "2"
+
+secretStore:
+  enabled: true
+  kind: SecretStore
+  name: dynatrace-aws-secret-store
+  namespace: dynatrace
+  labels:
+    project: dynatrace
+  provider:
+    aws:
+      service: SecretsManager
+      region: eu-west-2
+
+externalSecrets:
+  - name: dynatrace-ext-secret
+    namespace: dynatrace
+    secretStoreRef: dynatrace-aws-secret-store
+    refreshInterval: "10m"
+    target:
+      name: dynatrace-secret
+      creationPolicy: Owner
+    dataFrom:
+      - extract:
+          key: dev/dynatrace-operator/token                 

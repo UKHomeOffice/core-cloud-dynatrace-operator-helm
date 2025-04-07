@@ -1,0 +1,29 @@
+apiVersion: dynatrace.com/v1beta2
+kind: DynaKube
+metadata:
+  name: "{{.Values.global.dynaKubeName}}"
+spec:
+  apiUrl: "https://{{.Values.dyntraceEnvironmentId}}.live.dynatrace.com/api"
+  oneAgent:
+    hostGroup: "{{.Values.global.dynaKubeName}}"
+    applicationMonitoring:
+      useCSIDriver: false
+  activeGate:
+    capabilities:
+      - routing
+      - kubernetes-monitoring
+      - dynatrace-api
+    resources:
+      requests:
+        cpu: 500m
+        memory: 512Mi
+      limits:
+        cpu: 1000m
+        memory: 1.5Gi
+    tolerations:
+    - key: node-role.kubernetes.io/master
+      effect: NoSchedule
+      operator: Exists
+    - key: CriticalAddonsOnly
+      effect: NoSchedule
+      operator: Exists
