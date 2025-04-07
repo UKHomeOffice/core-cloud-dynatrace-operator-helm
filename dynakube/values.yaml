@@ -1,0 +1,59 @@
+# values for dynatrace operator
+dynatrace-operator:
+  operator:
+    tolerations:
+    - key: CriticalAddonsOnly
+      operator: Exists
+      effect: "NoSchedule"
+  webhook:
+    tolerations:
+    - key: CriticalAddonsOnly
+      operator: Exists
+      effect: "NoSchedule"
+  csidriver:
+    tolerations:
+    - key: CriticalAddonsOnly
+      operator: Exists
+      effect: "NoSchedule"
+    - key: node-role.kubernetes.io/master
+      operator: Exists
+      effect: "NoSchedule"
+    - key: node-role.kubernetes.io/control-plane
+      operator: Exists
+      effect: "NoSchedule"
+  activeGate:
+    tolerations:
+    - key: CriticalAddonsOnly
+      operator: Exists
+      effect: "NoSchedule"
+    replicas: "2"
+
+# Values for external secret (for dynakube)
+external-secrets-resources:
+  secretStore:
+    enabled: true
+    kind: SecretStore
+    name: dynatrace-secret-store
+    provider:
+      aws:
+        service: SecretsManager
+        region: eu-west-2
+  # Values for the ExternalSecret
+  externalSecret:
+    enabled: true
+    name: core-cloud-dynakube
+    labels:
+      app: dynatrace
+      refreshInterval: 10m
+    secretStoreRef:
+      name: dynatrace-secret-store
+      kind: SecretStore
+    data:
+      - secretKey: apiToken
+        remoteRef:
+          key: 'dynatrace-tokens'
+          property: apiToken
+      - secretKey: dataIngestToken
+        remoteRef:
+          key: 'dynatrace-tokens'
+          property: dataIngestToken                    
