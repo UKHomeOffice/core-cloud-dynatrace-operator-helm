@@ -1,11 +1,11 @@
 apiVersion: dynatrace.com/v1beta2
 kind: DynaKube
 metadata:
-  name: "{{.Values.global.dynaKubeName}}"
+  name: "{{.Values.name}}"
 spec:
   apiUrl: "https://{{.Values.dyntraceEnvironmentId}}.live.dynatrace.com/api"
   oneAgent:
-    hostGroup: "{{.Values.global.dynaKubeName}}"
+    hostGroup: "{{.Values.name}}"
     applicationMonitoring:
       useCSIDriver: false
   activeGate:

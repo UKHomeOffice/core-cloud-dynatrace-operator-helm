@@ -3,4 +3,4 @@ dependencies:
   repository: https://raw.githubusercontent.com/Dynatrace/dynatrace-operator/main/config/helm/repos/stable
   version: 1.4.0
 digest: sha256:066d0ac8aedba1beb5f659166ae2667a7b00a3ad166184841ce79c1904759a13
-generated: "2025-04-07T12:08:05.689881+01:00"
+generated: "2025-04-09T14:23:40.743074+01:00"
