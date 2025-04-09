@@ -2,13 +2,13 @@ apiVersion: v1
 entries:
   dynakube:
   - apiVersion: v2
-    created: "2025-04-09T16:08:08.633373+01:00"
+    created: "2025-04-09T16:30:04.895188+01:00"
     dependencies:
     - name: dynatrace-operator
       repository: https://raw.githubusercontent.com/Dynatrace/dynatrace-operator/main/config/helm/repos/stable
       version: 1.4.0
     description: Dynatrace Dynakube
-    digest: 62c0bc06c77f6bbd51fc4f44a0c7b3316e7f0e3102e8a12611a91b27459651d7
+    digest: ae1788c950621eef5ddfabd52fb21b653e7e4a2878f2cf44e2b6b286ab27fd85
     name: dynakube
     urls:
     - dynakube-1.0.0.tgz
@@ -16,7 +16,7 @@ entries:
   dynatrace-operator:
   - apiVersion: v2
     appVersion: 1.4.0
-    created: "2025-04-09T16:08:08.635041+01:00"
+    created: "2025-04-09T16:30:04.896691+01:00"
     description: The Dynatrace Operator Helm chart for Kubernetes and OpenShift
     digest: d09c178806648400d76955a4c0af249cf769016eda768899f4ba5a700e1cdc58
     home: https://www.dynatrace.com/
@@ -36,4 +36,4 @@ entries:
     urls:
     - charts/dynatrace-operator-1.4.0.tgz
     version: 1.4.0
-generated: "2025-04-09T16:08:08.620707+01:00"
+generated: "2025-04-09T16:30:04.88974+01:00"
