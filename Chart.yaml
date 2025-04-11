@@ -2,7 +2,7 @@ apiVersion: v2
 description: Dynatrace Dynakube
 name: dynakube
 version: 1.0.0
-# dependencies:
-#   - name: dynatrace-operator
-#     version: "1.4.0"
-#     repository: "https://raw.githubusercontent.com/Dynatrace/dynatrace-operator/main/config/helm/repos/stable"
+dependencies:
+  # - name: dynatrace-operator
+  #   version: "1.4.0"
+  #   repository: "https://raw.githubusercontent.com/Dynatrace/dynatrace-operator/main/config/helm/repos/stable"
