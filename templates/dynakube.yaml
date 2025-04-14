@@ -9,8 +9,8 @@ spec:
     hostGroup: "{{ .Values.clustername }}"
     applicationMonitoring:
       useCSIDriver: false
-    classicFullStack:
-      # Controls where the OneAgent gets injected
+    # classicFullStack:
+    #   # Controls where the OneAgent gets injected
       namespaceSelector:
         matchExpressions:
           - key: "kubernetes.io/metadata.name"
