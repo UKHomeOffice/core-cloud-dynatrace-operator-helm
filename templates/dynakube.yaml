@@ -16,7 +16,6 @@ spec:
           - key: "kubernetes.io/metadata.name"
             operator: "NotIn"
             values:
-              - kube-system
               - sonarqube
   activeGate:
     capabilities:
