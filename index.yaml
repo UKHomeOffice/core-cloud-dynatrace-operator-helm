@@ -2,11 +2,11 @@ apiVersion: v1
 entries:
   dynakube:
   - apiVersion: v2
-    created: "2025-04-14T13:11:23.502554+01:00"
+    created: "2025-04-14T13:24:15.789478+01:00"
     description: Dynatrace Dynakube
-    digest: 2dae36292a9be1f79e3bc07caa801b43027fce00c6ea290a52d64fa24f6803c2
+    digest: b8c59115f688682484efd5f68e8a238b81bcc24dc49d5675dbf81becbcdd847c
     name: dynakube
     urls:
     - dynakube-1.0.0.tgz
     version: 1.0.0
-generated: "2025-04-14T13:11:23.489969+01:00"
+generated: "2025-04-14T13:24:15.75764+01:00"
